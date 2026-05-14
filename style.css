@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-color: #ff6f00;
+  --bg-color: #f4f4f4;
+  --task-bg: #ffffff;
+  --text-color: #333;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e2e2e2;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 600px; /* عرض مناسب جداً للديسكتوب */
+  max-width: 95%; /* عشان الموبايلات الصغيرة */
+  margin-block: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form {
+  padding: 20px;
+  background: #eee;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.form .input {
+  flex: 1; /* يخلي الـ input ياخد المساحة المتاحة كلها */
+  padding: 15px;
+  border-radius: 8px;
+  outline: none;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.form .input:focus {
+  border-color: var(--main-color);
+}
+
+.form .add {
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: none;
+  background: var(--main-color);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form .add:hover {
+  background: #e66400;
+}
+
+.tasks {
+  background: #eee;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 100px;
+}
+
+.tasks div {
+  background-color: var(--task-bg);
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.tasks div:hover {
+  transform: translateX(5px); /* حركة لليمين بسيطة عند الوقوف بالماوس */
+}
+
+.tasks h5 {
+  flex: 1;
+  font-size: 17px;
+  color: var(--text-color);
+  margin-right: 15px;
+}
+
+.r-side-handler {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* زرار الحذف */
+.tasks button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #f44336; /* لون أحمر صريح للحذف */
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  transition: 0.3s;
+}
+
+.tasks button:hover {
+  background: #d32f2f;
+}
+
+/* Custom Checkbox */
+.task-check {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--main-color);
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s;
+  background-color: white;
+}
+
+.task-check:checked {
+  background-color: var(--main-color);
+}
+
+.task-check:checked::after {
+  content: "✔";
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Responsive التجاوب مع الشاشات */
+@media (max-width: 600px) {
+  .form {
+    flex-direction: column; /* الـ input والزرار فوق بعض في الموبايل */
+  }
+  .form .input {
+    width: 100%;
+  }
+  .form .add {
+    width: 100%;
+  }
+}
